@@ -1,0 +1,176 @@
+:root {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #e5e7eb;
+  --accent: #2563eb;
+  --accent-2: #10b981;
+  --danger: #dc2626;
+  --shadow: 0 10px 24px rgba(2, 6, 23, 0.08);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, "Noto Sans", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 400px at 10% -10%, #eef2ff 0%, transparent 60%),
+    radial-gradient(800px 300px at 90% -20%, #ecfeff 0%, transparent 60%),
+    var(--bg);
+  line-height: 1.5;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 16px;
+  min-height: 42px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  line-height: 1;
+}
+.btn.secondary { background: var(--accent-2); }
+.btn.outline { background: #fff; color: var(--accent); border-color: var(--accent); box-shadow: none; }
+.btn.block { width: 100%; }
+
+button { cursor: pointer; }
+
+.container { max-width: 1200px; margin: 24px auto; padding: 0 20px; }
+.section { margin: 28px 0; }
+
+/* Navbar */
+.navbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(2,6,23,0.04);
+}
+.navbar .brand { font-weight: 800; font-size: 18px; color: var(--text); margin-right: 16px; }
+.navbar .left a { margin-right: 14px; color: var(--muted); padding: 6px 10px; border-radius: 8px; }
+.navbar .left a.active, .navbar .left a:hover { color: var(--accent); background: #eff6ff; }
+.navbar .right { display: flex; align-items: center; gap: 10px; }
+.navbar .right button { background: var(--danger); color: #fff; border: 1px solid transparent; padding: 8px 10px; border-radius: 10px; }
+
+/* Cards, grids, tables */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; }
+@media (max-width: 960px) {
+  .grid, .grid-2 { grid-template-columns: 1fr; }
+}
+.center { display: flex; align-items: center; justify-content: center; text-align: center; }
+
+.table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 12px; }
+.table th, .table td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
+.table thead th { background: #f1f5f9; font-weight: 700; }
+.table tbody tr:nth-child(odd) { background: #fafafa; }
+
+/* Forms */
+.form { display: grid; gap: 12px; }
+label { display: grid; gap: 6px; font-weight: 600; color: var(--muted); }
+input, select, textarea {
+  padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border);
+  background: #fff; color: var(--text);
+  margin: 10px
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid #bfdbfe; border-color: #93c5fd; }
+
+/* Hero */
+.hero {
+  position: relative; border-radius: 18px; overflow: hidden; min-height: 360px;
+  display: flex; align-items: flex-end;
+  background-size: cover; background-position: center;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,23,42,0.20) 0%, rgba(15,23,42,0.55) 70%); }
+.hero-content { position: relative; padding: 28px; color: #fff; max-width: 900px; }
+.hero-title { font-size: clamp(28px, 4vw, 44px); line-height: 1.1; font-weight: 800; margin: 0 0 8px 0; }
+.hero-sub { font-size: 18px; opacity: 0.95; margin-bottom: 16px; }
+.hero-cta { display: inline-flex; gap: 10px; }
+
+/* How it works bubble */
+.hiw {
+  position: absolute; right: 24px; top: 24px;
+  background: rgba(255,255,255,0.92); color: #0f172a;
+  border: 1px solid var(--border); backdrop-filter: blur(6px);
+  border-radius: 18px; padding: 16px 18px; max-width: 360px;
+  box-shadow: var(--shadow);
+}
+.hiw h4 { margin: 0 0 8px; font-size: 18px; }
+.hiw ol { margin: 0; padding-left: 18px; }
+
+/* Stats numbers */
+.stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* Scanner wrapper */
+.scanner { background: #0b1220; border-radius: 12px; padding: 8px; color: #fff; }
+
+/* Footer */
+.footer {
+  margin-top: 40px;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
+  padding: 24px 0;
+}
+.footer-brand .brand { font-weight: 800; font-size: 18px; margin-bottom: 6px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-col { display: grid; gap: 6px; }
+.footer-title { font-weight: 700; margin-bottom: 4px; }
+.footer a { color: var(--muted); }
+.footer a:hover { color: var(--accent); text-decoration: none; }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 10px 0;
+  background: #f9fafb;
+}
+.grid-2eq {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.align-start { align-items: start; }
+
+@media (max-width: 960px) {
+  .grid-2eq { grid-template-columns: 1fr; }
+}
+
+/* Help headings align nicely in cards */
+.card h3 { margin: 0 0 12px 0; }
+
+/* Make tables more stable to avoid layout shifts and odd wrapping that can misalign heights */
+.table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 12px; table-layout: fixed; }
+.table th, .table td {
+  padding: 12px; border-bottom: 1px solid var(--border); text-align: left;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.table thead th { background: #f1f5f9; font-weight: 700; }
+.table tbody tr:nth-child(odd) { background: #fafafa; }
