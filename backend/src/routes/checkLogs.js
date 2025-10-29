@@ -6,7 +6,6 @@ router.use(requireAuth);
 
 router.post('/scan', requireRoles('security', 'admin'), ctrl.scanAndLog);
 router.get('/', requireRoles('admin', 'security', 'host'), ctrl.listLogs);
-// CSV export
 router.get('/export.csv', requireRoles('admin', 'security'), ctrl.exportCsv);
 
 module.exports = router;
