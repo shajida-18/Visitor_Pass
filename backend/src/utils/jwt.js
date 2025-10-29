@@ -1,24 +1,20 @@
 const jwt = require("jsonwebtoken");
 
-function signAuthToken(claims) {
+function signAuthToken(info) {
   const payload = {
-    userId: claims.userId,
-    visitorId: claims.visitorId,
-    orgId: claims.orgId,
-    role: claims.role,
-    name: claims.name,
-    email: claims.email,
+    userId: info.userId,
+    visitorId: info.visitorId,
+    orgId: info.orgId,
+    role: info.role,
+    name: info.name,
+    email: info.email,
   };
 
   const secret = process.env.JWT_SECRET;
-  const options = {
-    expiresIn: process.env.JWT_EXPIRES_IN || "7d",
-  };
+  const expires = process.env.JWT_EXPIRES_IN || "7d";
 
-  const token = jwt.sign(payload, secret, options);
+  const token = jwt.sign(payload, secret, { expiresIn: expires });
   return token;
 }
 
-module.exports = {
-  signAuthToken,
-};
+module.exports = { signAuthToken };
